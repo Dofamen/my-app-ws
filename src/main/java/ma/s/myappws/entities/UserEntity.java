@@ -1,14 +1,10 @@
 package ma.s.myappws.entities;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
 
-public class UserEntity implements Serializable {
-    private static final long serialVersionUID = 4452468591294242168L;
+import javax.persistence.*;
 
+@Entity
+public class UserEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
