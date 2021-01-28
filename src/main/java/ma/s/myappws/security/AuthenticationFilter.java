@@ -3,7 +3,7 @@ package ma.s.myappws.security;
 import io.jsonwebtoken.Jwts;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.SignatureAlgorithm;
-import ma.s.myappws.Requests.UserLoginRequest;
+import ma.s.myappws.requests.UserLoginRequest;
 import ma.s.myappws.SpringApplicationContext;
 import ma.s.myappws.services.UserService;
 import ma.s.myappws.shared.dto.UserDto;
@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -30,7 +31,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse response) throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse response)
+            throws AuthenticationException {
         try {
             UserLoginRequest creds = new ObjectMapper().readValue(req.getInputStream(), UserLoginRequest.class);
 

@@ -33,14 +33,14 @@ public class WebSecrutiry extends WebSecurityConfigurerAdapter {
         http
                 .cors().and()
                 .csrf().disable()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, SecurityConstans.SIGN_UP_URL)
-                .permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .addFilter(getAuthenticationFilter()) //.addFilter(new AuthenticationFilter(authenticationManager())); //old method for filer url with /login
-                .addFilter(new AuthorizationFilter(authenticationManager()))
-                .sessionManagement()
+                    .authorizeRequests()
+                    .antMatchers(HttpMethod.POST, SecurityConstans.SIGN_UP_URL)
+                    .permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .addFilter(getAuthenticationFilter()) //.addFilter(new AuthenticationFilter(authenticationManager())); //old method for filer url with /login
+                    .addFilter(new AuthorizationFilter(authenticationManager()))
+                    .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Stateless if u r working with API
 
     }

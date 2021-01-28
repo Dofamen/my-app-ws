@@ -21,7 +21,9 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
 
+
     compile 'io.jsonwebtoken:jjwt:0.9.1'
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.12.1'
 }
 
 test {

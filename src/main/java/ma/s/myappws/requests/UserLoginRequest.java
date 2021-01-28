@@ -1,4 +1,4 @@
-package ma.s.myappws.Requests;
+package ma.s.myappws.requests;
 
 public class UserLoginRequest {
     private String email;

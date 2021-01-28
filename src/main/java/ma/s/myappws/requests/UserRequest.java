@@ -1,18 +1,10 @@
-package ma.s.myappws.Response;
+package ma.s.myappws.requests;
 
-public class UserResponse {
-    private String userID;
+public class UserRequest {
     private String firstName;
     private String lastName;
     private String email;
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+    private String password;
 
     public String getFirstName() {
         return firstName;
@@ -36,5 +28,13 @@ public class UserResponse {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

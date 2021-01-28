@@ -18,6 +18,7 @@ import java.util.ArrayDeque;
 @Service
 public class UserServiceImpl implements UserService {
 
+
     @Autowired
     UserRespository userRespository;
     @Autowired
@@ -50,6 +51,37 @@ public class UserServiceImpl implements UserService {
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(userEntity, userDto);
         return userDto;
+    }
+
+    @Override
+    public UserDto getUserByUssrId(String UserId) {
+        UserEntity userEntity = userRespository.findByUserID(UserId);
+        if (userEntity == null) throw new UsernameNotFoundException(UserId);
+
+        UserDto userDto = new UserDto();
+        BeanUtils.copyProperties(userEntity, userDto);
+        return userDto;
+    }
+
+    @Override
+    public UserDto updateUser(String userId, UserDto userDto) {
+        UserEntity userEntity = userRespository.findByUserID(userId);
+        if (userEntity == null) throw new UsernameNotFoundException(userId);
+
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
+        UserEntity userUpdated =  userRespository.save(userEntity);
+        UserDto user = new UserDto();
+        BeanUtils.copyProperties(userUpdated, user);
+        return user;
+    }
+
+    @Override
+    public void deleteUser(String useId) {
+        UserEntity userEntity = userRespository.findByUserID(useId);
+        if (userEntity == null) throw new UsernameNotFoundException(useId);
+        userRespository.delete(userEntity);
+
     }
 
     @Override
